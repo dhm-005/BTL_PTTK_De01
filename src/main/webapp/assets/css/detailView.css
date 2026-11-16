@@ -1,0 +1,166 @@
+
+.detail-page {
+    max-width: 960px;
+    margin: 32px auto 60px;
+    padding: 0 24px;
+}
+
+.detail-page h1 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0 auto 28px;
+    color: #18332e;
+}
+
+.detail-card {
+    background: #fff;
+    border: 1px solid #b9d1cb;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(20, 89, 77, 0.06);
+}
+
+/* Khối trên: Ảnh bên trái + Bảng 4 dòng bên phải[cite: 3] */
+.detail-top {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid #b9d1cb;
+}
+
+.cover-box {
+    padding: 12px;
+    border-right: 1px solid #b9d1cb;
+    background: #fafdfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.cover-box img {
+    display: block;
+    width: 100%;
+    max-width: 156px;
+    height: auto;
+    max-height: 210px;
+    aspect-ratio: 3 / 4;
+    object-fit: contain; /* Giữ nguyên toàn bộ bìa sách, không cắt mất chữ */
+    border: 1px solid #cfe0dc;
+    border-radius: 6px;
+    background: #eef4f2;
+    padding: 4px;
+}
+
+/* Bảng thông tin chung[cite: 3] */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+}
+
+.info-table th,
+.info-table td {
+    padding: 11px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #cfe0dc;
+}
+
+.top-table tr:last-child th,
+.top-table tr:last-child td,
+.bottom-table tr:last-child th,
+.bottom-table tr:last-child td {
+    border-bottom: none;
+}
+
+.top-table th {
+    width: 150px;
+    font-weight: 700;
+    color: #18332e;
+}
+
+/* Dòng đầu tiên Mã tài liệu nổi bật giống header xanh trong mockup[cite: 3] */
+.highlight-row th,
+.highlight-row td {
+    background: #14594d;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Xen kẽ màu nền nhạt giữa các hàng[cite: 3] */
+.top-table tbody tr:nth-child(even) th,
+.top-table tbody tr:nth-child(even) td,
+.bottom-table tbody tr:nth-child(odd) th,
+.bottom-table tbody tr:nth-child(odd) td {
+    background: #e9f2ef;
+}
+
+.bottom-table th {
+    font-weight: 700;
+    color: #18332e;
+    border-right: 1px solid #cfe0dc;
+}
+
+.bottom-table td + th {
+    border-left: 1px solid #cfe0dc;
+}
+
+.col-label-sm { width: 150px; }
+.col-val-sm   { width: 160px; }
+.col-label-md { width: 150px; }
+.col-val-lg   { width: auto; }
+
+.desc-cell {
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.info-table a {
+    color: #14594d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.info-table a:hover {
+    text-decoration: underline;
+}
+
+/* Nút Quay lại[cite: 3] */
+.actions {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 10px 28px;
+    background: #14594d;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.btn-back:hover {
+    background: #0f453b;
+}
+
+@media (max-width: 720px) {
+    .detail-top {
+        grid-template-columns: 1fr;
+    }
+    .cover-box {
+        border-right: none;
+        border-bottom: 1px solid #b9d1cb;
+    }
+    .cover-box img {
+        width: 160px;
+        height: 200px;
+    }
+}
