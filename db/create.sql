@@ -74,10 +74,10 @@ CREATE TABLE IF NOT EXISTS tblDocumentCopy1 (
     price DECIMAL(10,2) NOT NULL,
     tblLocation1ID BIGINT,
     tblDocument1ID BIGINT,
-    tblRecevingRecord1ID BIGINT,
+    tblReceivingRecord1ID BIGINT,
     FOREIGN KEY (tblLocation1ID) REFERENCES tblLocation1(id),
     FOREIGN KEY (tblDocument1ID) REFERENCES tblDocument1(id),
-    FOREIGN KEY (tblRecevingRecord1ID) REFERENCES tblRecevingRecord1(id)
+    FOREIGN KEY (tblReceivingRecord1ID) REFERENCES tblReceivingRecord1(id)
 );
 
 -- 8. tblDeaccession1
@@ -132,20 +132,19 @@ CREATE TABLE IF NOT EXISTS tblMember1 (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     hashPassword VARCHAR(255) NOT NULL,
-    status VARCHAR(255),
+    accountStatus VARCHAR(255),
     fullName VARCHAR(255) NOT NULL,
     birthday DATE,
     email VARCHAR(255) UNIQUE NOT NULL,
     phone VARCHAR(255),
     profilePicture VARCHAR(255),
-    readerCode VARCHAR(255) UNIQUE,
     role VARCHAR(255) NOT NULL,
     tblReaderGroup1ID BIGINT,
     FOREIGN KEY (tblReaderGroup1ID) REFERENCES tblReaderGroup1(id)
 );
 
--- 13. tblRecevingRecord1
-CREATE TABLE IF NOT EXISTS tblRecevingRecord1 (
+-- 13. tblReceivingRecord1
+CREATE TABLE IF NOT EXISTS tblReceivingRecord1 (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     receivingDate DATETIME NOT NULL,
     totalAmount DECIMAL(10,2) NOT NULL,
@@ -275,10 +274,10 @@ CREATE TABLE IF NOT EXISTS tblCardService1 (
 
 -- 25. tblCardReissue1
 CREATE TABLE IF NOT EXISTS tblCardReissue1 (
-    id BIGINT PRIMARY KEY,
+    tblLibraryCardRequest1ID BIGINT PRIMARY KEY,
     reason VARCHAR(255),
     readerID BIGINT,
-    FOREIGN KEY (id) REFERENCES tblLibraryCardRequest1(id),
+    FOREIGN KEY (tblLibraryCardRequest1ID) REFERENCES tblLibraryCardRequest1(id),
     FOREIGN KEY (readerID) REFERENCES tblMember1(id)
 );
 

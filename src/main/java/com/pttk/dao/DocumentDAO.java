@@ -118,16 +118,12 @@ public class DocumentDAO extends DAO {
             }
         }
 
-        // Đổ danh sách tác giả dạng List vào mảng Array của Document1
+        // Gán danh sách tác giả cho Document1
         for (Entry<Long, Document1> entry : documentMap.entrySet()) {
             Long docId = entry.getKey();
             Document1 doc = entry.getValue();
             List<AuthorDocument1> authList = documentAuthorsMap.get(docId);
-            if (authList != null && !authList.isEmpty()) {
-                doc.setAuthors(authList.toArray(new AuthorDocument1[0]));
-            } else {
-                doc.setAuthors(new AuthorDocument1[0]); // Mảng rỗng
-            }
+            doc.setAuthors(authList);
         }
 
         return new ArrayList<>(documentMap.values());
@@ -276,8 +272,8 @@ public class DocumentDAO extends DAO {
 
                     }
                 }
-                document.setAuthors(authList.toArray(AuthorDocument1[]::new));
-                document.setCopies(copies.toArray(DocumentCopy1[]::new));
+                document.setAuthors(authList);
+                document.setCopies(copies);
             }
 
         } 

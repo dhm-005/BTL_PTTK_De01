@@ -1,17 +1,19 @@
 
 package com.pttk.model.user;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public abstract class Member1 {
+    public enum AccountStatus{
+        ACTIVE, SUSPEND, LOCKED, BANNED, DELETED
+    }
+    
     private Long id;
     private String username;
     private String password;
-    private enum accountStatus{
-        ACTIVE, SUSPEND, LOCKED, BANNED, DELETED
-    };
+    private AccountStatus accountStatus;
     private String fullname;
-    private LocalDateTime birthday;
+    private LocalDate birthday;
     private String email;
     private String phone;
     private String profilePicture;
@@ -25,6 +27,14 @@ public abstract class Member1 {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public AccountStatus getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(AccountStatus accountStatus) {
+        this.accountStatus = accountStatus;
     }
 
     public String getUsername() {
@@ -51,11 +61,11 @@ public abstract class Member1 {
         this.fullname = fullname;
     }
 
-    public LocalDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

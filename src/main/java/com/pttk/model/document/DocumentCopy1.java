@@ -19,6 +19,7 @@ public class DocumentCopy1 {
     private String conditionDescription;
     private BigDecimal price;
     private Location1 location;
+    private Document1 document;
 
     public DocumentCopy1() {
     }
@@ -29,6 +30,14 @@ public class DocumentCopy1 {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Document1 getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document1 document) {
+        this.document = document;
     }
 
     public String getBarCode() {

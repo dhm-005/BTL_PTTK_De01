@@ -26,9 +26,9 @@
         
         <main>
             <h1>Tìm kiếm tài liệu</h1>
-            <form action="document/search" method="get">
+            <form action="document/search" method="get" class="search-form">
                 <input type="search" name="keyword" value="<%= JspUtils.escapeHtml(keyword)%>"
-                       placeholder="Tên tài liệu, ISBN, mô tả hoặc tác giả" aria-label="Từ khóa tìm kiếm" maxlength="255">
+                       placeholder="Tên tài liệu, ISBN, mô tả hoặc tác giả">
                 <button type="submit">Tìm kiếm</button>
             </form>
 
@@ -62,15 +62,15 @@
                                 <td><%= JspUtils.escapeHtml(document.getLanguage() != null ? document.getLanguage(): "-")%></td>
 
                                 <td>
-                                    <% AuthorDocument1[] authors = document.getAuthors(); %>
-                                    <% if (authors != null && authors.length > 0) { %>
-                                        <% for (int i = 0; i < authors.length; i++) {
-                                            AuthorDocument1 ad = authors[i];
+                                    <% List<AuthorDocument1> authors = document.getAuthors(); %>
+                                    <% if (authors != null && !authors.isEmpty()) { %>
+                                        <% for (int i = 0; i < authors.size(); i++) {
+                                            AuthorDocument1 ad = authors.get(i);
                                             if (ad != null && ad.getAuthor() != null) {%>
 
                                             <a href="author/info?authorId=<%= ad.getAuthor().getId()%>">
                                                 <%= JspUtils.escapeHtml(ad.getAuthor().getName())%>
-                                            </a><%= i < authors.length - 1 ? ", " : ""%>
+                                            </a><%= i < authors.size() - 1 ? ", " : ""%>
 
                                             <% }
                                         }

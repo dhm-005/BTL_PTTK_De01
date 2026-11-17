@@ -1,6 +1,7 @@
 package com.pttk.model.document;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Document1 {
 
@@ -15,14 +16,14 @@ public class Document1 {
     private String coverImage;
     private Publisher1 publisher;
     private Category1 category;
-    private DocumentCopy1[] copies;
-    private AuthorDocument1[] authors;
+    private List<DocumentCopy1> copies;
+    private List<AuthorDocument1> authors;
 
-    public AuthorDocument1[] getAuthors() {
+    public List<AuthorDocument1> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(AuthorDocument1[] authors) {
+    public void setAuthors(List<AuthorDocument1> authors) {
         this.authors = authors;
     }
     
@@ -114,11 +115,11 @@ public class Document1 {
         this.category = category;
     }
 
-    public DocumentCopy1[] getCopies() {
+    public List<DocumentCopy1> getCopies() {
         return copies;
     }
 
-    public void setCopies(DocumentCopy1[] copies) {
+    public void setCopies(List<DocumentCopy1> copies) {
         this.copies = copies;
     }
 

@@ -48,6 +48,13 @@ public class DocumentServlet extends HttpServlet {
         
     }
     
+    public void getSearchPage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        if (!AuthUtils.isRole(request, response, "reader")) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        request.getRequestDispatcher("/reader/searchDocumentView.jsp").forward(request, response);
+    }
     
     public void handleSearchByKeyword(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         
@@ -55,14 +62,14 @@ public class DocumentServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
-        String keyword = request.getParameter("keyword").trim();
-        if(keyword.isEmpty()){
+        String keyword = request.getParameter("keyword");
+        if(keyword == null || keyword.isBlank()){
             response.sendRedirect(request.getContextPath() + "/document/search-page");
+            return;
         }
-        
-        request.setAttribute("keyword", keyword);
-        System.out.println("Keyword là: ["+keyword+"]");
 
+        request.setAttribute("keyword", keyword.trim());
+        
         List<Document1> documents;
         try (DocumentDAO documentDAO = new DocumentDAO()) {
             documents = documentDAO.searchDocuments(keyword);
@@ -74,15 +81,7 @@ public class DocumentServlet extends HttpServlet {
         }
         request.setAttribute("documents", documents);
         request.getRequestDispatcher("/reader/searchDocumentView.jsp").forward(request, response);
-    
-    }
-    
-    public void getSearchPage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        if (!AuthUtils.isRole(request, response, "reader")) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
-        request.getRequestDispatcher("/reader/searchDocumentView.jsp").forward(request, response);
+        
     }
     
     public void listDetail(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{

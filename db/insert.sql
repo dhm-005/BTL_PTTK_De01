@@ -59,11 +59,11 @@ INSERT INTO tblReaderGroup1 (id, name, `description`, tblLoanPolicy1ID) VALUES
 (2, 'Giảng viên', 'Cán bộ giảng dạy trong trường', 2);
 
 -- 9. tblMember1 (hashPassword đều là '1234')
-INSERT INTO tblMember1 (id, username, hashPassword, status, fullName, birthday, email, phone, profilePicture, readerCode, role, tblReaderGroup1ID) VALUES
-(1, 'reader1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Lê Minh Tuấn', '2004-03-12', 'tuan.lm@example.com', '0912345671', 'assets/img/avatar1.png', 'RD2026001', 'READER', 1),
-(2, 'reader2', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Phạm Thu Hà', '2004-09-25', 'ha.pt@example.com', '0912345672', 'assets/img/avatar2.png', 'RD2026002', 'READER', 1),
-(3, 'librarian1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Nguyễn Thị Lan', '1992-07-18', 'lan.nt@library.vn', '0987654321', 'assets/img/lib1.png', NULL, 'LIBRARIAN', NULL),
-(4, 'manager1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Trần Quốc Bảo', '1985-11-02', 'bao.tq@library.vn', '0987654322', 'assets/img/mgr1.png', NULL, 'MANAGER', NULL);
+INSERT INTO tblMember1 (id, username, hashPassword, accountStatus, fullName, birthday, email, phone, profilePicture, role, tblReaderGroup1ID) VALUES
+(1, 'reader1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Lê Minh Tuấn', '2004-03-12', 'tuan.lm@example.com', '0912345671', 'assets/img/avatar1.png', 'READER', 1),
+(2, 'reader2', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Phạm Thu Hà', '2004-09-25', 'ha.pt@example.com', '0912345672', 'assets/img/avatar2.png', 'READER', 1),
+(3, 'librarian1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Nguyễn Thị Lan', '1992-07-18', 'lan.nt@library.vn', '0987654321', 'assets/img/lib1.png', 'LIBRARIAN', NULL),
+(4, 'manager1', '$2a$12$5UoLcu1j0rTmdGkvkOep0uZxd0Z2HC3EjdAZJYUjegypUv5OsL/Uu', 'ACTIVE', 'Trần Quốc Bảo', '1985-11-02', 'bao.tq@library.vn', '0987654322', 'assets/img/mgr1.png', 'MANAGER', NULL);
 
 -- 10. tblSupplier1
 INSERT INTO tblSupplier1 (id, `name`, address, email, phone) VALUES
@@ -106,7 +106,7 @@ INSERT INTO tblInventoryDetail1 (id, result, actualCondition, note, tblInventory
 -- 17. tblLoanRecord1
 INSERT INTO tblLoanRecord1 (id, loanDate, `status`, readerID, librarianID) VALUES
 (1, '2026-11-01 10:00:00', 'ACTIVE', 1, 3),
-(2, '2026-10-10 14:00:00', 'RETURNED', 2, 3);
+(2, '2026-10-10 14:00:00', 'COMPLETED', 2, 3);
 
 -- 18. tblLoanDetail1
 INSERT INTO tblLoanDetail1 (id, dueDate, renewalCount, status, tblLoanRecord1ID, tblDocumentCopy1ID) VALUES
@@ -141,7 +141,7 @@ INSERT INTO tblCardReissue1 (id, reason, readerID) VALUES
 
 -- 25. tblLibraryCard1
 INSERT INTO tblLibraryCard1 (id, barcode, issueDate, expiryDate, status, tblLibraryCardRequest1ID, readerID) VALUES
-(1, 'CARD-2026-0001', '2026-09-02', '2027-09-02', 'ACTIVE', 2, 1);
+(1, '2026-0001', '2026-09-02', '2027-09-02', 'ACTIVE', 2, 1);
 
 -- 26. tblPayment1
 INSERT INTO tblPayment1 (id, amount, status, payDate, content, method) VALUES

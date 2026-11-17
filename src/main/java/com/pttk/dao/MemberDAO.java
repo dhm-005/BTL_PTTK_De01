@@ -21,9 +21,9 @@ public class MemberDAO extends DAO {
         }
 
         // Lấy thêm cột role để biết tạo đối tượng con nào
-        String sql = "SELECT id, fullName, email, phone, profilePicture, role, hashPassword, readerCode "
+        String sql = "SELECT id, fullName, email, phone, profilePicture, role, hashPassword "
                 + "FROM tblMember1 "
-                + "WHERE username = ? AND status = 'ACTIVE' "
+                + "WHERE username = ? AND accountStatus = 'ACTIVE' "
                 + "LIMIT 1";
 
         try (PreparedStatement statement = con.prepareStatement(sql)) {
@@ -41,7 +41,6 @@ public class MemberDAO extends DAO {
                     // Dựa vào role trong DB để khởi tạo đúng lớp con của abstract Member1
                     if ("READER".equalsIgnoreCase(role)) {
                         Reader1 reader = new Reader1();
-                        reader.setReaderCode(rs.getString("readerCode"));
                         member = reader;
                     } 
                     else if ("LIBRARIAN".equalsIgnoreCase(role)) {

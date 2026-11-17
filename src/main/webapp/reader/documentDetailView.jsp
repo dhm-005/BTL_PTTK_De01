@@ -1,4 +1,5 @@
 <%@page import="java.util.LinkedHashSet"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.pttk.model.document.Location1"%>
 <%@page import="com.pttk.model.document.DocumentCopy1"%>
@@ -35,9 +36,9 @@
                 String defCover = "assets/img/default-cover.jpg";
                 String cover = JspUtils.getOrDefaultFile(application, document.getCoverImage(), defCover);
 
-                AuthorDocument1[] authors = document.getAuthors();
-                DocumentCopy1[] copies = document.getCopies();
-                int availableCount = (copies != null) ? copies.length : 0;
+                List<AuthorDocument1> authors = document.getAuthors();
+                List<DocumentCopy1> copies = document.getCopies();
+                int availableCount = (copies != null) ? copies.size() : 0;
 
                 // Gom các vị trí lưu trữ duy nhất từ danh sách bản sao
                 Set<String> locations = new LinkedHashSet<>();
@@ -77,12 +78,12 @@
                             <tr>
                                 <th>Tác giả:</th>
                                 <td>
-                                    <% if (authors != null && authors.length > 0) {
-                                        for (int i = 0; i < authors.length; i++) {
-                                            if (authors[i] != null && authors[i].getAuthor() != null) { %>
-                                                <a href="author/info?authorId=<%= authors[i].getAuthor().getId() %>">
-                                                    <%= JspUtils.escapeHtml(authors[i].getAuthor().getName()) %>
-                                                </a><%= i < authors.length - 1 ? ", " : "" %>
+                                    <% if (authors != null && !authors.isEmpty()) {
+                                        for (int i = 0; i < authors.size(); i++) {
+                                            if (authors.get(i) != null && authors.get(i).getAuthor() != null) { %>
+                                                <a href="author/info?authorId=<%= authors.get(i).getAuthor().getId() %>">
+                                                    <%= JspUtils.escapeHtml(authors.get(i).getAuthor().getName()) %>
+                                                </a><%= i < authors.size() - 1 ? ", " : "" %>
                                             <% }
                                         }
                                     } else { %>-<% } %>
