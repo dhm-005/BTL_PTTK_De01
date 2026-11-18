@@ -12,11 +12,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="${pageContext.request.contextPath}/">
+        <link href="assets/css/main.css" rel="stylesheet">
+        
         <title>Tìm bản sao tài liệu</title>
+        <link href="assets/css/searchView.css" rel="stylesheet">
+        <link href="assets/css/detailView.css" rel="stylesheet">
+        
     </head>
     <body>
-        <h1>Tìm bản sao tài liệu</h1>
-        <form action="copy/search" method="get">
+        <jsp:include page="/includes/header.jsp"/>
+        
+        <main>
+        <form action="copy/search" method="get" class="search-form">
             <input type="search" name="barcode" value="<%= JspUtils.escapeHtml(barcode) %>"
                    placeholder="Mã vạch bản sao">
             <button type="submit">Tìm kiếm</button>
@@ -31,9 +38,14 @@
             <p>Trạng thái: <%= JspUtils.escapeHtml(copy.getStatus()) %></p>
             <form action="loan/temporary" method="post">
                 <input type="hidden" name="addCopy" value="true">
-                <button type="submit">Tiếp tục</button>
+                
+                <a href="loan/temporary" class="button-a purple">Quay lại danh sách mượn</a>
+                <button type="submit" class="button-a green">Tiếp tục</button>
             </form>
         <% } %>
-        <p><a href="loan/temporary">Quay lại danh sách mượn</a></p>
+        
+        
+        </main>
+        
     </body>
 </html>

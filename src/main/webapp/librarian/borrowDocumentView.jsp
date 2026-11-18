@@ -29,35 +29,43 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href="${pageContext.request.contextPath}/">
+        <link href="assets/css/main.css" rel="stylesheet">
+        <link href="assets/css/borrowView.css" rel="stylesheet">
+
         <title>Lập phiếu mượn</title>
     </head>
     <body>
-        <h1>Lập phiếu mượn</h1>
+        <jsp:include page="/includes/header.jsp"/>
+
+        <main class="borrow-view">
         <% if (errorMessage != null) { %>
-            <p><%= JspUtils.escapeHtml(errorMessage) %></p>
+            <p class="borrow-message error"><%= JspUtils.escapeHtml(errorMessage) %></p>
         <% } %>
         <% if (successMessage != null) { %>
-            <p><%= JspUtils.escapeHtml(successMessage) %></p>
+            <p class="borrow-message success"><%= JspUtils.escapeHtml(successMessage) %></p>
         <% } %>
         <% if (warningMessage != null) { %>
-            <p><%= JspUtils.escapeHtml(warningMessage) %></p>
+            <p class="borrow-message warning"><%= JspUtils.escapeHtml(warningMessage) %></p>
         <% } %>
 
         <h2>Thông tin bạn đọc</h2>
         <% if (reader == null) { %>
-            <p>Chưa chọn bạn đọc.</p>
+            <p class="borrow-empty">Chưa chọn bạn đọc.</p>
         <% } else { %>
-            <table border="1">
+            <div class="table-wrap">
+            <table class="borrow-table">
                 <tr><th>Mã bạn đọc</th><td><%= JspUtils.escapeHtml(reader.getId()) %></td></tr>
                 <tr><th>Họ tên</th><td><%= JspUtils.escapeHtml(reader.getFullname()) %></td></tr>
                 <tr><th>Trạng thái</th><td><%= JspUtils.escapeHtml(reader.getAccountStatus()) %></td></tr>
                 <tr><th>Nhóm bạn đọc</th><td><%= JspUtils.escapeHtml(
                         reader.getGroup() == null ? "" : reader.getGroup().getName()) %></td></tr>
             </table>
+            </div>
         <% } %>
 
         <h2>Danh sách đang mượn/chưa trả (<%= unfinishedSize %>)</h2>
-        <table border="1">
+        <div class="table-wrap">
+        <table class="borrow-table">
             <tr><th>Tài liệu</th><th>Mã bản sao</th><th>Hạn trả</th><th>Trạng thái</th></tr>
             <% if (unfinishedLoanList != null && !unfinishedLoanList.isEmpty()) {
                 for (LoanDetail1 detail : unfinishedLoanList) {
@@ -74,9 +82,11 @@
                 <tr><td colspan="4">Không có sách đang mượn.</td></tr>
             <% } %>
         </table>
+        </div>
 
         <h2>Danh sách tạm thời (<%= temporarySize %>)</h2>
-        <table border="1">
+        <div class="table-wrap">
+        <table class="borrow-table">
             <tr><th>Tài liệu</th><th>Mã bản sao</th><th>Trạng thái</th></tr>
             <% if (temporaryCopyList != null && !temporaryCopyList.isEmpty()) {
                 for (DocumentCopy1 copy : temporaryCopyList) { %>
@@ -91,18 +101,22 @@
                 <tr><td colspan="3">Chưa chọn bản sao nào.</td></tr>
             <% } %>
         </table>
+        </div>
 
-        <p>Giới hạn mượn: <%= unfinishedSize + temporarySize %> / <%= maxBorrowed %></p>
+        <p class="borrow-limit">Giới hạn mượn: <%= unfinishedSize + temporarySize %> / <%= maxBorrowed %></p>
         <% if (limitReached) { %>
-            <p>Đã chạm giới hạn mượn, không thể tiếp tục.</p>
+            <p class="borrow-message warning">Đã chạm giới hạn mượn, không thể tiếp tục.</p>
         <% } %>
+        <div class="borrow-actions">
         <form action="copy/search-page" method="get">
-            <button type="submit" <%= limitReached ? "disabled" : "" %>>Tiếp tục chọn sách</button>
+            <button type="submit" class="button-a purple" <%= limitReached ? "disabled" : "" %>>Tiếp tục</button>
         </form>
         <form action="loan/create" method="post">
-            <button type="submit" <%= cannotConfirm ? "disabled" : "" %>>
-                Xác nhận và in phiếu
+            <button type="submit" class="button-a green" <%= cannotConfirm ? "disabled" : "" %>>
+                Xác nhận
             </button>
         </form>
+        </div>
+        </main>
     </body>
 </html>

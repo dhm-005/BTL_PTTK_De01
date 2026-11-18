@@ -26,12 +26,49 @@ INSERT INTO tblAuthor1 (id, name, image, bio) VALUES
 (4, 'Nhiều tác giả', 'assets/img/authors.jpg', 'Tập thể các nhà khoa học, giảng viên và chuyên gia nghiên cứu');
 
 -- 4. tblDocument1
-INSERT INTO tblDocument1 (id, name, ISBN, `description`, publishDate, edition, `language`, pages, coverImage, tblPublisher1ID, tblCategory1ID) VALUES
-(1, 'Phân tích thiết kế hệ thống thông tin', '978-604-0-12345-1', 'Giáo trình hướng đối tượng UML và thiết kế CSDL', '2024-05-10', 'Tái bản lần 3', 'Tiếng Việt', 320, NULL, 1, 2),
-(2, 'Lập trình Web với Java Servlet & JSP', '978-604-80-5432-1', 'Xây dựng ứng dụng web theo mô hình MVC', '2025-01-15', 'Lần 1', 'Tiếng Việt', 280, 'assets/img/java.jpg', 2, 1),
-(3, 'Clean Code', '978-0132350884', 'A Handbook of Agile Software Craftsmanship', '2008-08-01', '1st Edition', 'English', 464, 'assets/img/cleancode.jpg', 3, 1),
-(4, 'Tạp chí khoa học và công nghệ', NULL, 'Tạp chí công bố các công trình nghiên cứu khoa học và công nghệ mới nhất.', '2026-09-01', 'Số 9, Năm 2026', 'Tiếng Việt', 150, 'assets/img/cover1.jpg', 4, 3),
-(5, 'Tạp chí Khoa học Nghiên cứu Y học', NULL, 'Tạp chí khoa học chuyên ngành y học, công bố các công trình nghiên cứu và kết quả nghiên cứu trong lĩnh vực y khoa.', NULL, NULL, 'Tiếng Việt', 120, 'assets/img/cover2.jpg', 5, 3);
+INSERT INTO tblDocument1
+(id, name, ISBN, `description`, publishDate, edition,
+ `language`, pages, coverImage, tblPublisher1ID, tblCategory1ID)
+VALUES
+(1, 'Phân tích thiết kế hệ thống thông tin',
+ '978-604-0-12345-1', 'Giáo trình hướng đối tượng UML và thiết kế CSDL',
+ '2024-05-10', 'Tái bản lần 3', 'Tiếng Việt', 320, NULL, 1, 2),
+
+(2, 'Lập trình Web với Java Servlet & JSP',
+ '978-604-80-5432-1', 'Xây dựng ứng dụng web theo mô hình MVC',
+ '2025-01-15', 'Lần 1', 'Tiếng Việt', 280, 'assets/img/java.jpg', 2, 1),
+
+(3, 'Clean Code',
+ '978-0132350884', 'A Handbook of Agile Software Craftsmanship',
+ '2008-08-01', '1st Edition', 'English', 464, 'assets/img/cleancode.jpg', 3, 1),
+
+(4, 'Tạp chí khoa học và công nghệ',
+ NULL, 'Tạp chí công bố các công trình nghiên cứu khoa học và công nghệ mới nhất.',
+ '2026-09-01', 'Số 9, Năm 2026', 'Tiếng Việt', 150, 'assets/img/cover1.jpg', 4, 3),
+
+(5, 'Tạp chí Khoa học Nghiên cứu Y học',
+ NULL, 'Tạp chí khoa học chuyên ngành y học',
+ NULL, NULL, 'Tiếng Việt', 120, 'assets/img/cover2.jpg', 5, 3),
+
+(6, 'Lập trình Java cơ bản',
+ '978-604-80-0006-1', 'Giáo trình lập trình Java từ cơ bản đến nâng cao',
+ '2023-05-10', 'Lần 1', 'Tiếng Việt', 420, 'assets/img/java-basic.jpg', 1, 2),
+
+(7, 'Cơ sở dữ liệu MySQL',
+ '978-604-80-0007-8', 'Thiết kế cơ sở dữ liệu và truy vấn SQL',
+ '2024-02-20', 'Lần 2', 'Tiếng Việt', 380, 'assets/img/mysql.jpg', 2, 2),
+
+(8, 'Clean Architecture',
+ '978-0134494166', 'A Craftsman Guide to Software Structure and Design',
+ '2017-09-20', '1st Edition', 'English', 432, 'assets/img/clean-architecture.jpg', 3, 1),
+
+(9, 'Design Patterns',
+ '978-0201633610', 'Elements of Reusable Object-Oriented Software',
+ '1994-10-21', '1st Edition', 'English', 395, 'assets/img/design-patterns.jpg', 3, 1),
+
+(10, 'Lập trình Python',
+ '978-604-80-0010-8', 'Giáo trình lập trình Python thực hành',
+ '2025-03-15', 'Lần 1', 'Tiếng Việt', 450, 'assets/img/python.jpg', 1, 2);
 
 -- 5. tblAuthorDocument1
 INSERT INTO tblAuthorDocument1 (id, tblDocument1, tblAuthor1) VALUES
@@ -40,7 +77,12 @@ INSERT INTO tblAuthorDocument1 (id, tblDocument1, tblAuthor1) VALUES
 (3, 2, 1),
 (4, 3, 3),
 (5, 4, 4),
-(6, 5, 4);
+(6, 5, 4),
+(7, 6, 1),
+(8, 7, 2),
+(9, 8, 3),
+(10, 9, 3),
+(11, 10, 1);
 
 -- 6. tblLocation1
 INSERT INTO tblLocation1 (id, section, floor, room, shelf, note) VALUES
@@ -70,13 +112,13 @@ INSERT INTO tblSupplier1 (id, `name`, address, email, phone) VALUES
 (1, 'Công ty Sách Fahasa', '60-62 Lê Lợi, Q.1, TP.HCM', 'kinhdoanh@fahasa.com', '02838225446'),
 (2, 'Nhà sách Trí Tuệ', '187 Giảng Võ, Hà Nội', 'contact@tritue.vn', '02438515567');
 
--- 11. tblRecevingRecord1
-INSERT INTO tblRecevingRecord1 (id, receivingDate, totalAmount, tblSupplier1ID, librarianID) VALUES
+-- 11. tblReceivingRecord1
+INSERT INTO tblReceivingRecord1 (id, receivingDate, totalAmount, tblSupplier1ID, librarianID) VALUES
 (1, '2026-02-10 09:30:00', 1500000.00, 1, 3),
 (2, '2026-03-05 14:15:00', 2200000.00, 2, 3);
 
 -- 12. tblDocumentCopy1
-INSERT INTO tblDocumentCopy1 (id, barcode, status, physicalCondition, conditionDescription, price, tblLocation1ID, tblDocument1ID, tblRecevingRecord1ID) VALUES
+INSERT INTO tblDocumentCopy1 (id, barcode, status, physicalCondition, conditionDescription, price, tblLocation1ID, tblDocument1ID, tblReceivingRecord1ID) VALUES
 (1, 'DOC-001-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 120000.00, 1, 1, 1),
 (2, 'DOC-001-02', 'LOANED', 'OLD', 'Bìa hơi gập nhẹ', 120000.00, 1, 1, 1),
 (3, 'DOC-002-01', 'AVAILABLE', 'OLD', 'Sách cũ', 150000.00, 1, 2, 1),
@@ -84,7 +126,43 @@ INSERT INTO tblDocumentCopy1 (id, barcode, status, physicalCondition, conditionD
 (5, 'DOC-003-02', 'DEACCESSED', 'BADLY_DAMAGED', 'Rách hỏng nhiều trang, thanh lý', 450000.00, 2, 3, 2),
 (6, 'DOC-004-01', 'AVAILABLE', 'NEW', 'Tạp chí mới phát hành', 80000.00, 3, 4, 1),
 (7, 'DOC-005-01', 'AVAILABLE', 'NEW', 'Tạp chí lưu trữ trên kệ', 95000.00, 3, 5, 2),
-(8, 'DOC-005-02', 'LOANED', 'OLD', 'Đang có bạn đọc mượn', 95000.00, 3, 5, 2);
+(8, 'DOC-005-02', 'LOANED', 'OLD', 'Đang có bạn đọc mượn', 95000.00, 3, 5, 2),
+
+-- Bổ sung bản sao cho tài liệu 1–5
+(9, 'DOC-001-03', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 120000.00, 1, 1, 1),
+(10, 'DOC-001-04', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 120000.00, 1, 1, 1),
+(11, 'DOC-002-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 150000.00, 1, 2, 1),
+(12, 'DOC-002-03', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 150000.00, 1, 2, 1),
+(13, 'DOC-003-03', 'AVAILABLE', 'NEW', 'Sách nguyên vẹn', 450000.00, 2, 3, 2),
+
+-- Tài liệu 6: 3 bản sao
+(14, 'DOC-006-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 110000.00, 1, 6, 1),
+(15, 'DOC-006-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 110000.00, 1, 6, 1),
+(16, 'DOC-006-03', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 110000.00, 1, 6, 2),
+
+-- Tài liệu 7: 3 bản sao
+(17, 'DOC-007-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 125000.00, 1, 7, 1),
+(18, 'DOC-007-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 125000.00, 1, 7, 1),
+(19, 'DOC-007-03', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 125000.00, 2, 7, 2),
+
+-- Tài liệu 8: 4 bản sao
+(20, 'DOC-008-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 220000.00, 2, 8, 2),
+(21, 'DOC-008-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 220000.00, 2, 8, 2),
+(22, 'DOC-008-03', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 220000.00, 2, 8, 2),
+(23, 'DOC-008-04', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 220000.00, 2, 8, 2),
+
+-- Tài liệu 9: 3 bản sao
+(24, 'DOC-009-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 210000.00, 2, 9, 2),
+(25, 'DOC-009-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 210000.00, 2, 9, 2),
+(26, 'DOC-009-03', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 210000.00, 2, 9, 2),
+
+-- Tài liệu 10: 4 bản sao
+(27, 'DOC-010-01', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 175000.00, 1, 10, 1),
+(28, 'DOC-010-02', 'AVAILABLE', 'NEW', 'Sách mới nguyên vẹn', 175000.00, 1, 10, 1),
+(29, 'DOC-010-03', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 175000.00, 1, 10, 2),
+(30, 'DOC-010-04', 'AVAILABLE', 'GOOD', 'Sách còn tốt', 175000.00, 1, 10, 2);
+
+
 
 -- 13. tblDeaccession1
 INSERT INTO tblDeaccession1 (id, date, reason, tblDocumentCopy1ID, managerID) VALUES
@@ -92,7 +170,8 @@ INSERT INTO tblDeaccession1 (id, date, reason, tblDocumentCopy1ID, managerID) VA
 
 -- 14. tblReservation1
 INSERT INTO tblReservation1 (id, requestDate, expiryDate, status, processDate, tblDocument1ID, memberID, librarianID) VALUES
-(1, '2026-11-10 08:30:00', '2026-11-13 17:00:00', 'APPROVED', '2026-11-10 09:00:00', 1, 2, 3);
+(1, '2026-11-10 08:30:00', '2026-11-13 17:00:00', 'APPROVED', '2026-11-10 09:00:00', 1, 2, 3),
+(2, '2026-11-18 09:00:00', '2026-11-25 17:00:00', 'APPROVED', '2026-11-18 09:30:00', 6, 2, 3);
 
 -- 15. tblInventoryCheck1
 INSERT INTO tblInventoryCheck1 (id, date, content, status, note, librarianID) VALUES
@@ -136,7 +215,7 @@ INSERT INTO tblCardRegistration1 (tblLibraryCardRequest1ID, readerName, readerEm
 (1, 'Lê Minh Tuấn', 'tuan.lm@example.com', 'assets/img/avatar1.png');
 
 -- 24. tblCardReissue1
-INSERT INTO tblCardReissue1 (id, reason, readerID) VALUES
+INSERT INTO tblCardReissue1 (tblLibraryCardRequest1ID, reason, readerID) VALUES
 (2, 'Làm rơi mất ví', 1);
 
 -- 25. tblLibraryCard1

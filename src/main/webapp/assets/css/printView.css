@@ -1,0 +1,119 @@
+.print-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.print-card {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 20px;
+    padding: 20px 30px 60px;
+}
+
+.print-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.print-warning {
+    color: red;
+}
+
+.print-parties,
+.print-signatures {
+    display: flex;
+    justify-content: space-between;
+}
+
+.print-parties {
+    margin-bottom: 15px;
+}
+
+.print-section-title {
+    font-weight: bold;
+}
+
+.print-loan-heading {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.print-loan-table {
+    width: 100%;
+    margin-top: 5px;
+    border-collapse: collapse;
+}
+
+.print-loan-table th,
+.print-loan-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.print-loan-table .print-sequence {
+    text-align: center;
+}
+
+.print-loan-table th.print-sequence {
+    width: 50px;
+}
+
+.print-terms {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.print-terms .print-section-title {
+    margin-bottom: 5px;
+}
+
+.print-terms-copy {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.print-signatures {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.print-signature {
+    width: 40%;
+}
+
+.print-signature-title {
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.print-signature-note {
+    margin: 0;
+    color: #666;
+    font-style: italic;
+}
+
+@media print {
+    header,
+    .button-a,
+    form {
+        display: none !important;
+    }
+
+    .print-view {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .print-card {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+}

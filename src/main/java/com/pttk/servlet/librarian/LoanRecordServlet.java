@@ -1,6 +1,7 @@
 
 package com.pttk.servlet.librarian;
 
+import com.pttk.dao.LoanDetailDAO;
 import com.pttk.dao.LoanRecordDAO;
 import com.pttk.dao.ReservationDAO;
 import com.pttk.model.borrowreturn.LoanDetail1;
@@ -38,6 +39,7 @@ public class LoanRecordServlet extends HttpServlet {
         
         switch (path) {
             case "/loan/temporary":
+                listUnfinishedLoan(request, response);
                 listTemporary(request, response);
                 break;
             case "/loan/create":
@@ -62,6 +64,7 @@ public class LoanRecordServlet extends HttpServlet {
                 handleCreateLoan(request, response);
                 break;
             case "/loan/temporary":
+                listUnfinishedLoan(request, response);
                 listTemporary(request, response);
                 break;
             case "/loan/print":
@@ -93,7 +96,6 @@ public class LoanRecordServlet extends HttpServlet {
         if (temporaryCopyList == null) {
             temporaryCopyList = new ArrayList<>();
         }
-        listUnfinishedLoan(request, response);
         
         Reader1 reader = (Reader1) session.getAttribute("reader");
         List<LoanDetail1> unfinishedLoanList =
@@ -128,7 +130,6 @@ public class LoanRecordServlet extends HttpServlet {
         Reader1 reader = (Reader1) session.getAttribute("reader");
         List<DocumentCopy1> temporaryCopyList = (List<DocumentCopy1>) session.getAttribute("temporaryCopyList");
         Librarian1 librarian = (Librarian1) session.getAttribute("member");
-        listUnfinishedLoan(request, response);
 
         if (request.getAttribute("errorMessage") != null) {
             request.getRequestDispatcher("/librarian/borrowDocumentView.jsp").forward(request, response);
@@ -282,8 +283,8 @@ public class LoanRecordServlet extends HttpServlet {
             return;
         }
 
-        try (LoanRecordDAO loanDAO = new LoanRecordDAO()) {
-            List<LoanDetail1> unfinishedLoanList = loanDAO.getUnfinishedLoan(reader.getId());
+        try (LoanDetailDAO loanDetailDAO = new LoanDetailDAO()) {
+            List<LoanDetail1> unfinishedLoanList = loanDetailDAO.getUnfinishedLoan(reader.getId());
             request.getSession().setAttribute("unfinishedLoanList", unfinishedLoanList);
         } catch (SQLException ex) {
             getServletContext().log("Could not load unfinished loans.", ex);

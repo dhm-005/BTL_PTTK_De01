@@ -119,14 +119,6 @@ h1 {
     margin: 0;
 }
 
-button{
-    transition: filter 0.2s;
-}
-
-button:hover{
-    filter: brightness(1.2);
-}
-
 button.nav-link {
     background: transparent;
     font-family: inherit;
@@ -139,4 +131,49 @@ button.nav-link:hover,
 a.nav-link:hover {
     background: rgba(255, 255, 255, 0.14);
     border-color: #fff;
+}
+
+button{
+    transition: filter 0.2s;
+}
+
+button:hover{
+    filter: brightness(1.2);
+}
+
+
+.button-a {
+    background: #ffffff;
+    color: black;
+    border: 1.5px solid black;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: filter 0.2s;
+    font: 16px arial;
+    cursor: pointer;
+}
+
+.button-a:hover {
+    color: inherit;
+    filter: brightness(1.2);
+}
+
+.button-a:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    filter:none;
+}
+
+.button-a.purple {
+    background: #ffffff;
+    color: #7c3aed;
+    border-color: #7c3aed;
+}
+
+.button-a.green {
+    background: #16806b;
+    color: white;
+    border: none;
 }

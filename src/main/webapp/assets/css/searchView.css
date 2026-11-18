@@ -1,13 +1,24 @@
 
 body {
+    min-height: 100vh;
     margin: 0;
-    background: #f3f7f5;
+    background: linear-gradient(135deg, #eaf4f0 0%, #f3f7f5 52%, #edf2fb 100%);
 }
 
 main {
     max-width: 1080px;
-    margin: 0 auto;
-    padding: 42px 24px;
+    margin: 34px auto;
+    padding: 36px 32px 42px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #dfeae5;
+    border-radius: 18px;
+    box-shadow: 0 14px 36px rgba(24, 51, 46, 0.1);
+}
+
+main > h1 {
+    margin: 0 0 24px;
+    color: #14594d;
+    font-size: clamp(28px, 4vw, 36px);
 }
 
 input {
@@ -19,7 +30,9 @@ input {
     font-size: 16px;
 }
 .count {
+    margin: 0 0 14px;
     color: #5b706b;
+    font-weight: 700;
 }
 .document {
     padding: 22px;
@@ -56,21 +69,89 @@ input {
     font-size: 16px;
 }
 
+.search-form input:focus {
+    outline: none;
+    border-color: #16806b;
+    box-shadow: 0 0 0 3px rgba(22, 128, 107, 0.14);
+}
+
 .search-form button {
+    min-height: 48px;
     padding: 0 22px;
     border: 0;
     border-radius: 9px;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+    transition: filter 0.15s ease, box-shadow 0.15s ease;
 }
 .search-form button[type='submit'] {
     background: #16806b;
     color: white;
 }
+
+.search-form button[type='submit']:hover {
+    filter: brightness(0.94);
+    box-shadow: 0 4px 12px rgba(20, 89, 77, 0.2);
+}
+
 .search-form .btn-scan {
     background: #ffffff;
     color: #7c3aed;
     border: 1.5px solid #7c3aed;
+}
+
+main > table {
+    width: 100%;
+    border: 1px solid #d5e4de;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(20, 89, 77, 0.07);
+}
+
+main > table th {
+    padding: 14px 12px;
+    background: #14594d;
+    color: #fff;
+    font-size: 14px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+main > table td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e9e5;
+    line-height: 1.45;
+    vertical-align: top;
+}
+
+main > table tbody tr:nth-child(even) {
+    background: #f5faf8;
+}
+
+main > table tbody tr.clickable {
+    transition: background-color 0.15s ease;
+}
+
+main > table tbody tr.clickable:hover {
+    background: #e7f3ef;
+    filter: none;
+}
+
+main > table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+main > table a {
+    color: #14594d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+main > table a:hover {
+    text-decoration: underline;
 }
 

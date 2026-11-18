@@ -17,7 +17,7 @@
                 <p class="eyebrow">THƯ VIỆN SỐ LIBMAN</p>
                 <h1>Tri thức bắt đầu từ một trang sách.</h1>
                 <p class="intro">Tra cứu sách, tạp chí và tài liệu trong bộ sưu tập thư viện.</p>
-                <a href="document/search-page">Bắt đầu tìm kiếm</a>
+                <a href="document/search-page" class="button-a purple">Bắt đầu tìm kiếm</a>
             </section>
         </main>
     </body>

@@ -2,26 +2,44 @@
     width: 100%;
     min-height: calc(100vh - 80px); /* Phủ kín phần màn hình còn lại bên dưới header */
     margin: 0 auto;
-    padding: 72px 24px;
     background-image: url("../img/the-scholars-path-admont-abbey.jpg");
     background-size: cover;  
     background-position: center;
     background-repeat: no-repeat;
+    
+    align-content: center;
 }
 
 .hero {
     box-shadow: 0 12px 36px #18332e12;
+    padding: 72px 24px;
+    background: 
+        linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.65) 100%),
+        linear-gradient(to top, transparent 30%, rgba(0, 0, 0, 0.65) 100%);
+        /*rgba(0, 0,0, 0.5);*/
+}
+
+.hero .eyebrow {
+    color: #34d399;;
+}
+
+.hero h1 {
+    color: #fff;
 }
 
 .intro,
 .hint {
-    color: #5b706b;
+    color: #94a3b8;
     line-height: 1.6;
 }
 
 .intro {
     margin: 18px 0 28px;
     font-size: 18px;
+}
+
+.hero .intro {
+    color: #cbd5e1;
 }
 
 .hint {

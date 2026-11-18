@@ -21,7 +21,7 @@
         <link href="assets/css/detailView.css" rel="stylesheet">
     </head>
     <body>
-        <jsp:include page="/includes/header.jsp"></jsp:include>
+        <jsp:include page="/includes/header.jsp"/>
         
         <main>
         <form action="reader/search" method="get" class="search-form">
@@ -75,7 +75,7 @@
             </div>
         </div>
         
-        <a href="loan/temporary">Tiếp tục</a>
+        <a href="loan/temporary" class="button-a green">Tiếp tục</a>
         </main>
         <% } %>
     </body>
