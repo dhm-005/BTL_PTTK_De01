@@ -27,6 +27,7 @@
             <input type="search" name="barcode" value="<%= JspUtils.escapeHtml(barcode) %>"
                    placeholder="Mã vạch bản sao">
             <button type="submit">Tìm kiếm</button>
+            <button type="button" class="btn-scan"> Quét thẻ </button>
         </form>
 
         <% if (searched && copy == null) { %>
